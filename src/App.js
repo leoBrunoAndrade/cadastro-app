@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 import Form from './componentes/Form';
 import List from './componentes/List';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function App() {
 
@@ -29,7 +29,7 @@ function App() {
 
   }
 
-
+/*
   useEffect(() => {
 
     async function getCustomers() {
@@ -43,7 +43,7 @@ function App() {
     
   }, [])
 
-
+*/
   
   
 
