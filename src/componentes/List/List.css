@@ -1,0 +1,21 @@
+.list { 
+    text-align: center;
+    padding: 32px;
+    position: relative;
+    
+  }
+  
+  .list h3 {
+    font-size: 32px;
+    border-bottom: 4px solid #57C278;
+    display: inline-block;
+    padding-bottom: 8px;
+  }
+  
+  .list .users {
+    justify-content: space-around;
+    margin-top: 32px;
+    flex-wrap: wrap;
+    
+  }
+  
