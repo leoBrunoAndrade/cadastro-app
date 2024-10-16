@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 import Form from './componentes/Form';
 import List from './componentes/List';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
 
@@ -15,49 +15,40 @@ function App() {
   const [customers, setCustomers] = useState([]);
 
   
+  async function getCustomers() {
+    await axios.get(baseURL).then((res) => {
+      setCustomers(JSON.parse(JSON.stringify(res.data)))
+      console.log("getCustomers")
+    })
+  }
 
   async function sendApiCreateUser(customer) {
 
-    //console.log(user)    
-    const response = await axios.post(baseURL, customer).catch( error => {
+    const res = await axios.post(baseURL, customer).catch( error => {
       setError(error)
     });
-
-    //setCustomers(customer)
+    const cus = JSON.parse(JSON.stringify(res.data));
+    console.log(cus)   
+  
+    setCustomers([...customers, cus])
 
     if (error) return `Error: ${error.message}`;
 
   }
 
-/*
+
   useEffect(() => {
-
-    async function getCustomers() {
-      const response = await axios.get(baseURL)
-      setCustomers(response.data)
-      console.log(customers)
-    }
-
-    getCustomers();
-
-    
+    console.log("Chamando")
+    getCustomers()
   }, [])
 
-*/
-  
-  
 
+  console.log(customers)
   return (
-
-  
     <div>
-
       <Form createCustomer={sendApiCreateUser}/>
-
-      <List></List>
-   
+      {customers.map( c => <List key={c.id} customer={c}></List>)}
     </div>
-  
   )
 }
 

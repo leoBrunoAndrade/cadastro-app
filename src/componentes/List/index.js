@@ -2,19 +2,12 @@ import User from '../User'
 import './List.css'
 
 
-const List = ({}) => {
-
+const List = ({customer}) => {
     return(
-
-
        <section className='list' >
-
             <div className="users">
-                <User firstName="Bruno" LastName="Andrade"/>
-                <User firstName="Bruno" LastName="Andrade"/>
-
+                <User firstName={customer.firstName} LastName={customer.lastName} postalCode={customer.postalCode}/>
             </div>
-
         </section>
     )
 }
